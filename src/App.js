@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+//
+import { Route } from "wouter";
+import { Fragment } from "react";
+import { INTERNAL_ROUTES, ROUTES_PATHS } from "app/core/const/internal.routes";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Route
+        path={INTERNAL_ROUTES.MOVIE_HOME_PAGE.path}
+        component={INTERNAL_ROUTES.MOVIE_HOME_PAGE.component}
+      />
+      <Route
+        path={INTERNAL_ROUTES.MOVIE_DETAIL_PAGE.path}
+        component={INTERNAL_ROUTES.MOVIE_DETAIL_PAGE.component}
+      />
+      <Route
+        path={ROUTES_PATHS.PRODUCT.HOME}
+        component={INTERNAL_ROUTES.PRODUCT_HOME_PAGE.component}
+      />
+    </Fragment>
   );
 }
 

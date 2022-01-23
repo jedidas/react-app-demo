@@ -1,0 +1,40 @@
+.app_categories {
+  padding-top: 10px;
+
+  &__title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  &__subtitle {
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &__item {
+    margin-bottom: 5px;
+    padding: 5px 15px;
+
+    img {
+      border-radius: 10px;
+      display: block;
+      margin-bottom: 5px;
+      width: 100%;
+    }
+  }
+}
