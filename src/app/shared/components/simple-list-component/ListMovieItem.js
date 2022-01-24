@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 
-import API_ROUTES from "app/core/const/api.routes";
+import { checkImage } from "app/core/utils/utils";
 
 const ListMovieItem = ({
   id,
@@ -11,13 +11,6 @@ const ListMovieItem = ({
   vote_average,
   url
 }) => {
-  const apiRoutes = API_ROUTES;
-  let checkImage = (image) => {
-    if (image) {
-      return apiRoutes.IMAGE.W500 + image;
-    }
-    return "https://via.placeholder.com/500x280";
-  };
 
   return (
     <li className="app_list-movies__item" id={id}>

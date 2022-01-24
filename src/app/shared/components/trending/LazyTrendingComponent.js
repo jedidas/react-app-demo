@@ -10,7 +10,7 @@ const LazyTrendingComponent = () => {
   return (
     <div ref={fromRef}>
       <Suspense fallback={null}>
-        {isNearScreen ? <TrendingComponent /> : null}
+        {isNearScreen && <TrendingComponent />}
       </Suspense>
     </div>
   );

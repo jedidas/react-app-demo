@@ -6,10 +6,10 @@ class MovieService extends ApiService {
   getDiscoverMovies = ({
     include_adult = false,
     sort_by = "popularity.desc",
-    language = "en",
+    page = 1,
   }) => {
     return this.get(
-      `${API_ROUTES.MOVIES.DISCOVER_MOVIES}?api_key=${process.env.REACT_APP_MOVIES_API_KEY}&sort_by=${sort_by}&include_adult=${include_adult}&language=${language}&page=1`
+      `${API_ROUTES.MOVIES.DISCOVER_MOVIES}?api_key=${process.env.REACT_APP_MOVIES_API_KEY}&sort_by=${sort_by}&include_adult=${include_adult}&page=${page}`
     );
   };
   getDetails = (id) => {
@@ -25,3 +25,4 @@ class MovieService extends ApiService {
 }
 
 export default MovieService;
+export const movieService = new MovieService();

@@ -1,17 +1,17 @@
 .app_list-movies {
+  display: grid;
+  min-height: 100vh;
+  gap: 0 16px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   list-style: none;
   margin: 0;
-  padding: 15px;
+  padding: 0;
+  @media (min-width: 679px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 
   &__thumbnail {
-    align-self: stretch;
-    align-items: center;
-    background-color: #ebebeb;
-    display: flex;
     width: 100%;
-    @media (min-width: 640px) {
-      max-width: 250px;
-    }
     img {
       display: block;
       width: 100%;
@@ -24,13 +24,8 @@
   }
 
   &__item-link {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    display: block;
     text-decoration: none;
-    @media (min-width: 640px) {
-      flex-direction: row;
-    }
   }
 
   &__info {

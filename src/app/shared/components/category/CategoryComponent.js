@@ -1,14 +1,7 @@
+import { checkImage } from "app/core/utils/utils";
 import "./category-component.scss";
 
-import API_ROUTES from "app/core/const/api.routes";
-
 const CategoryComponent = ({ title = "", options = [] }) => {
-  let checkImage = (image) => {
-    if (image) {
-      return API_ROUTES.IMAGE.W500 + image;
-    }
-    return "https://via.placeholder.com/500x280";
-  };
 
   return (
     <div className="app_categories">

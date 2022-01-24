@@ -1,0 +1,20 @@
+.movie-detail {
+  padding-top: 25px;
+
+  &__title {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  &__banner {
+    margin-bottom: 25px;
+    img {
+      display: block;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+  &__overview {
+    margin-bottom: 25px;
+  }
+}

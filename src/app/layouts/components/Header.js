@@ -12,14 +12,14 @@ const Header = () => {
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to={INTERNAL_ROUTES.MOVIE_HOME_PAGE.path}>
             <img
               src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg"
               alt=""
               width="30"
               height="24"
             />
-          </a>
+          </Link>
           
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">

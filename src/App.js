@@ -1,12 +1,12 @@
 import "./App.scss";
 //
 import { Route } from "wouter";
-import { Fragment } from "react";
 import { INTERNAL_ROUTES, ROUTES_PATHS } from "app/core/const/internal.routes";
+import { MoviesContextProvider } from "app/core/contexts/MoviesContext";
 
 function App() {
   return (
-    <Fragment>
+    <MoviesContextProvider >
       <Route
         path={INTERNAL_ROUTES.MOVIE_HOME_PAGE.path}
         component={INTERNAL_ROUTES.MOVIE_HOME_PAGE.component}
@@ -19,7 +19,7 @@ function App() {
         path={ROUTES_PATHS.PRODUCT.HOME}
         component={INTERNAL_ROUTES.PRODUCT_HOME_PAGE.component}
       />
-    </Fragment>
+    </MoviesContextProvider>
   );
 }
 
