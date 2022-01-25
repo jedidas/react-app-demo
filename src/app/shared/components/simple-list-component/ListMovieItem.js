@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 
 import { checkImage } from "app/core/utils/utils";
+import React from "react";
 
 const ListMovieItem = ({
   id,
@@ -9,9 +10,8 @@ const ListMovieItem = ({
   overview,
   popularity,
   vote_average,
-  url
+  url,
 }) => {
-
   return (
     <li className="app_list-movies__item" id={id}>
       <Link to={url} className="app_list-movies__item-link">
@@ -35,4 +35,6 @@ const ListMovieItem = ({
   );
 };
 
-export default ListMovieItem;
+export default React.memo(ListMovieItem, (prevProps, nextProps) => {
+  return prevProps.id === nextProps.id;
+});

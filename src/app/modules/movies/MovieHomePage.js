@@ -2,15 +2,18 @@ import React, { useCallback, useEffect, useRef } from "react";
 import debounce from "just-debounce-it";
 //
 import useMovies from "app/core/hooks/useMovies";
-import MainLayout from "app/layouts/MainLayout";
 import { INTERNAL_PATHS } from "app/core/const/internal.routes";
+import useNearScreen from "app/core/hooks/useNearScreen";
+import useFilter from "app/core/hooks/useFilter";
+//
+import MainLayout from "app/layouts/MainLayout";
+//
 import ListMovieItem from "app/shared/components/simple-list-component/ListMovieItem";
 import SimpleListComponent from "app/shared/components/simple-list-component/SimpleListComponent";
 import CircularSpinnerComponent from "app/shared/components/spinners/CircularSpinnerComponent";
 import LazyTrendingComponent from "app/shared/components/trending/LazyTrendingComponent";
-import useNearScreen from "app/core/hooks/useNearScreen";
 import FilterComponent from "app/modules/movies/components/FilterComponent";
-import useFilter from "app/core/hooks/useFilter";
+
 //
 const MovieHomePage = () => {
   //
@@ -18,7 +21,6 @@ const MovieHomePage = () => {
     sort_by: "popularity.desc",
     callback: ({ name, value }) => {
       setPage(1);
-      console.log("Callback", name, value);
     },
   });
   const { movies, isLoading, setPage } = useMovies({
@@ -54,15 +56,15 @@ const MovieHomePage = () => {
         <div className="app_layout__content">
           <div className="container-fluid">
             <div className="row">
-              <div className="col-12">
-                <h1>Movie List</h1>
-              </div>
-
               {/* Filter */}
               <FilterComponent
                 handleChange={handleChangeFilter}
                 state={stateFilter}
               />
+
+              <div className="col-12">
+                <h1>Movie List</h1>
+              </div>
 
               <div style={{ minHeight: "1000px" }}>
                 <SimpleListComponent>

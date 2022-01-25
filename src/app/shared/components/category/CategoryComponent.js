@@ -1,8 +1,8 @@
 import { checkImage } from "app/core/utils/utils";
+import React from "react";
 import "./category-component.scss";
 
 const CategoryComponent = ({ title = "", options = [] }) => {
-
   return (
     <div className="app_categories">
       <h2 className="app_categories__title">{title}</h2>
@@ -20,4 +20,6 @@ const CategoryComponent = ({ title = "", options = [] }) => {
   );
 };
 
-export default CategoryComponent;
+export default React.memo(CategoryComponent, (prevProps, nextProps) => {
+  return prevProps.options.length === nextProps.options.length;
+});

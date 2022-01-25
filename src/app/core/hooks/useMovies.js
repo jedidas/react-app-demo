@@ -11,8 +11,6 @@ function useMovies({ filter }) {
   useEffect(() => {
     setMovies((prevState) => ({ ...prevState, isLoading: true }));
     //
-    console.log("useMovies", currentPage);
-    //
     movieService
       .getDiscoverMovies({ ...filter, page: currentPage })
       .then(({ total_pages, results }) => {

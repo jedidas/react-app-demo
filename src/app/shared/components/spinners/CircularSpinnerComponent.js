@@ -1,3 +1,4 @@
+import React from "react";
 import "./circular-spinner-component.scss";
 //
 const CircularSpinnerComponent = () => {
@@ -8,4 +9,4 @@ const CircularSpinnerComponent = () => {
   );
 };
 
-export default CircularSpinnerComponent;
+export default React.memo(CircularSpinnerComponent);

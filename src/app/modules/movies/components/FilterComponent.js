@@ -1,4 +1,6 @@
-const FilterComponent = ({handleChange, state}) => {
+import React from "react";
+
+const FilterComponent = ({ handleChange, state }) => {
   return (
     <div className="app_filter">
       <div className="row">
@@ -51,4 +53,6 @@ const FilterComponent = ({handleChange, state}) => {
   );
 };
 
-export default FilterComponent;
+export default React.memo(FilterComponent, (prevProps, nextProps) => {
+  return prevProps.state.sort_by === nextProps.state.sort_by;
+});

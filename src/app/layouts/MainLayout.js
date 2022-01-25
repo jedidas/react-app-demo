@@ -4,7 +4,7 @@ import "./main-layout.scss";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, isStatic = false }) => {
   return (
     <Fragment>
       <Header />
@@ -14,4 +14,4 @@ const MainLayout = ({ children }) => {
   );
 };
 
-export default MainLayout;
+export default React.memo(MainLayout);

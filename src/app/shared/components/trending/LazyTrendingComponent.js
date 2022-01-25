@@ -15,4 +15,4 @@ const LazyTrendingComponent = () => {
     </div>
   );
 };
-export default LazyTrendingComponent;
+export default React.memo(LazyTrendingComponent);

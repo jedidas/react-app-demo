@@ -17,7 +17,7 @@ const MovieDetailPage = ({ params }) => {
   /**
    * Render Template
    */
-  console.log('MovieDetailPage');
+  console.log("MovieDetailPage");
 
   return (
     <MainLayout>
@@ -46,4 +46,6 @@ const MovieDetailPage = ({ params }) => {
   );
 };
 
-export default React.memo(MovieDetailPage);
+export default React.memo(MovieDetailPage, (prevProps, nextProps) => {
+  return prevProps.params.id === nextProps.params.id;
+});
