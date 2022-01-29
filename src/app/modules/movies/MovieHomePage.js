@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useRef } from "react";
 import debounce from "just-debounce-it";
+import { Helmet } from "react-helmet-async";
+//
+import { INTERNAL_PATHS } from "app/core/const/internal.routes";
 //
 import useMovies from "app/core/hooks/useMovies";
-import { INTERNAL_PATHS } from "app/core/const/internal.routes";
 import useNearScreen from "app/core/hooks/useNearScreen";
 import useFilter from "app/core/hooks/useFilter";
 //
@@ -51,57 +53,62 @@ const MovieHomePage = () => {
    */
 
   return (
-    <MainLayout>
-      <div className="app_layout__page">
-        <div className="app_layout__content">
-          <div className="container-fluid">
-            <div className="row">
-              {/* Filter */}
-              <FilterComponent
-                handleChange={handleChangeFilter}
-                state={stateFilter}
-              />
+    <>
+      <Helmet>
+        <title>Movies</title>
+      </Helmet>
+      <MainLayout>
+        <div className="app_layout__page">
+          <div className="app_layout__content">
+            <div className="container-fluid">
+              <div className="row">
+                {/* Filter */}
+                <FilterComponent
+                  handleChange={handleChangeFilter}
+                  state={stateFilter}
+                />
 
-              <div className="col-12">
-                <h1>Movie List</h1>
+                <div className="col-12">
+                  <h1>Movie List</h1>
+                </div>
+
+                <div style={{ minHeight: "1000px" }}>
+                  <SimpleListComponent>
+                    {movies.map(
+                      ({
+                        id,
+                        title,
+                        backdrop_path,
+                        overview,
+                        popularity,
+                        vote_average,
+                      }) => (
+                        <ListMovieItem
+                          key={id}
+                          id={id}
+                          title={title}
+                          backdrop_path={backdrop_path}
+                          overview={overview}
+                          popularity={popularity}
+                          vote_average={vote_average}
+                          url={`${INTERNAL_PATHS.MOVIE_DETAIL}${id}`}
+                        />
+                      )
+                    )}
+                  </SimpleListComponent>
+                </div>
+
+                {isLoading && <CircularSpinnerComponent />}
+                <div id="visor" ref={externalRef}></div>
               </div>
-
-              <div style={{ minHeight: "1000px" }}>
-                <SimpleListComponent>
-                  {movies.map(
-                    ({
-                      id,
-                      title,
-                      backdrop_path,
-                      overview,
-                      popularity,
-                      vote_average,
-                    }) => (
-                      <ListMovieItem
-                        key={id}
-                        id={id}
-                        title={title}
-                        backdrop_path={backdrop_path}
-                        overview={overview}
-                        popularity={popularity}
-                        vote_average={vote_average}
-                        url={`${INTERNAL_PATHS.MOVIE_DETAIL}${id}`}
-                      />
-                    )
-                  )}
-                </SimpleListComponent>
-              </div>
-
-              {isLoading && <CircularSpinnerComponent />}
-              <div id="visor" ref={externalRef}></div>
             </div>
           </div>
+          <aside className="app_layout__sidebar">
+            <LazyTrendingComponent />
+          </aside>
         </div>
-        <aside className="app_layout__sidebar">
-          <LazyTrendingComponent />
-        </aside>
-      </div>
-    </MainLayout>
+      </MainLayout>
+    </>
   );
 };
 

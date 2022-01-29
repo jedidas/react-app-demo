@@ -6,7 +6,7 @@ const useTrending = () => {
     loading: true,
     data: [],
     error: null,
-  });
+  }, []);
 
   useEffect(() => {
     movieService
