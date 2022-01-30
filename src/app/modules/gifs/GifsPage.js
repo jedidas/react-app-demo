@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import "./gifs-page.scss";
 import CircularSpinnerComponent from "app/shared/components/spinners/CircularSpinnerComponent";
 import Footer from "app/layouts/components/Footer";
-import Header from "app/layouts/components/Header";
 import List from "./components/List";
 import useGif from "./hooks/useGif";
 import SearchForm from "./components/SearchForm";
@@ -23,7 +22,7 @@ export default function GifsPage() {
       <Helmet>
         <title>My Gifs</title>
       </Helmet>
-      <Header />
+      
       <section className="gifts_page">
         <h1>Gifs</h1>
 

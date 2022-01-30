@@ -8,8 +8,6 @@ import useMovies from "app/core/hooks/useMovies";
 import useNearScreen from "app/core/hooks/useNearScreen";
 import useFilter from "app/core/hooks/useFilter";
 //
-import MainLayout from "app/layouts/MainLayout";
-//
 import ListMovieItem from "app/shared/components/simple-list-component/ListMovieItem";
 import SimpleListComponent from "app/shared/components/simple-list-component/SimpleListComponent";
 import CircularSpinnerComponent from "app/shared/components/spinners/CircularSpinnerComponent";
@@ -57,8 +55,7 @@ const MovieHomePage = () => {
       <Helmet>
         <title>Movies</title>
       </Helmet>
-      <MainLayout>
-        <div className="app_layout__page">
+      <div className="app_layout__page">
           <div className="app_layout__content">
             <div className="container-fluid">
               <div className="row">
@@ -107,7 +104,6 @@ const MovieHomePage = () => {
             <LazyTrendingComponent />
           </aside>
         </div>
-      </MainLayout>
     </>
   );
 };

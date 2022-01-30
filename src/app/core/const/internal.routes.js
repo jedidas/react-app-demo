@@ -5,6 +5,7 @@ import MovieDetailPage from "app/modules/movies/MovieDetailPage";
 import MovieHomePage from "app/modules/movies/MovieHomePage";
 import ProductsDetailPage from "app/modules/products/ProductsDetailPage";
 import ProductsHomePage from "app/modules/products/ProductsHomePage";
+import NotFoundPage from "app/modules/errors/NotFoundPage";
 
 export const ROUTES_PATHS = {
   MOVIE: {
@@ -20,6 +21,10 @@ export const ROUTES_PATHS = {
     DETAIL: "/detail",
     SEARCH: "/search",
   },
+  ERRORS: {
+    NOT_FOUND: "/:rest*",
+    UNAUTIZED: "/401",
+  },
 };
 
 export const INTERNAL_PATHS = {
@@ -32,6 +37,9 @@ export const INTERNAL_PATHS = {
   GIF_DEFAULT: `${ROUTES_PATHS.GIF.HOME}`,
   GIF_DETAIL: `${ROUTES_PATHS.GIF.HOME}${ROUTES_PATHS.GIF.DETAIL}`,
   GIF_SEARCH: `${ROUTES_PATHS.GIF.HOME}${ROUTES_PATHS.GIF.SEARCH}`,
+  //
+  ERROR_NOT_FOUND: `${ROUTES_PATHS.ERRORS.NOT_FOUND}`,
+  ERROR_UNAUTIZED: `${ROUTES_PATHS.ERRORS.UNAUTIZED}`,
 };
 
 export const INTERNAL_ROUTES = {
@@ -63,5 +71,9 @@ export const INTERNAL_ROUTES = {
   GIF_DETAIL: {
     path: INTERNAL_PATHS.GIF_DETAIL,
     component: GifDetailPage,
+  },
+  NOT_FOUND: {
+    path: INTERNAL_PATHS.ERROR_NOT_FOUND,
+    component: NotFoundPage,
   },
 };

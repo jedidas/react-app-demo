@@ -22,7 +22,7 @@ function reducer(state, action) {
 
 export default function useFormReducer({ initialKeyword, initialRating, initialLang }) {
   const [state, dispatch] = useReducer(reducer, {
-    keyboard: initialKeyword,
+    keyboard: decodeURIComponent(initialKeyword),
     rating: initialRating,
     lang: initialLang,
   });
