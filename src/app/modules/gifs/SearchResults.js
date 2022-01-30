@@ -12,10 +12,9 @@ import debounce from "just-debounce-it";
 import SearchForm from "./components/SearchForm";
 
 function SearchResults({ params }) {
-
-  const { keyboard = "" } = params;
+  const { keyboard, rating, lang } = params;
   const externalRef = useRef();
-  const { isLoading, gifs, setPage } = useGif({ keyboard });
+  const { isLoading, gifs, setPage } = useGif({ keyboard, rating, lang });
   const { isNearScreen } = useNearScreen({
     externalRef: isLoading ? null : externalRef,
     once: false,
@@ -41,7 +40,11 @@ function SearchResults({ params }) {
       </Helmet>
       <Header />
       <section className="gifts_page">
-        <SearchForm />
+        <SearchForm
+          initialKeyword={keyboard}
+          initialRating={rating}
+          initialLang={lang}
+        />
         <List gifs={gifs} />
         <div id="visor" ref={externalRef}></div>
         {isLoading && <CircularSpinnerComponent />}

@@ -23,13 +23,13 @@ function App() {
           path={INTERNAL_ROUTES.PRODUCT_HOME_PAGE.path}
           component={INTERNAL_ROUTES.PRODUCT_HOME_PAGE.component}
         />
-        <GifContextProvider value={{ name: "Hey" }}>
+        <GifContextProvider>
           <Route
             path={INTERNAL_ROUTES.GIF_HOME.path}
             component={INTERNAL_ROUTES.GIF_HOME.component}
           />
           <Route
-            path={INTERNAL_ROUTES.GIF_SEARCH.path + "/:keyboard?"}
+            path={INTERNAL_ROUTES.GIF_SEARCH.path + "/:keyboard/:rating?/:lang?"}
             component={INTERNAL_ROUTES.GIF_SEARCH.component}
           />
           <Route

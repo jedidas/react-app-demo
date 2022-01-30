@@ -5,13 +5,14 @@ import { GifContext } from "../contexts/GifContext";
 
 const INITIAL_PAGE = 0;
 
-export default function useGif({ keyboard } = { keyboard: null }) {
+export default function useGif({ keyboard = null, rating, lang }) {
   //
   const [isLoading, setLoading] = useState(false);
   const { gifs, setGifs } = useContext(GifContext);
   const [page, setPage] = useState(INITIAL_PAGE);
   //
-  const keywordToSearch = keyboard || localStorage.getItem("lastKeyboard") || "random";
+  const keywordToSearch =
+    keyboard || localStorage.getItem("lastKeyboard") || "random";
 
   const callApiRequest = useCallback(
     (query, merge = false) => {
@@ -35,10 +36,10 @@ export default function useGif({ keyboard } = { keyboard: null }) {
       return;
     }
     setLoading(true);
-    callApiRequest({ keyboard: keywordToSearch });
+    callApiRequest({ keyboard: keywordToSearch, rating, lang });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [keyboard, keywordToSearch, setGifs, callApiRequest]);
+  }, [keyboard, keywordToSearch, setGifs, rating, lang, callApiRequest]);
 
   //
   useEffect(() => {
@@ -47,9 +48,11 @@ export default function useGif({ keyboard } = { keyboard: null }) {
     }
     //
     setLoading(true);
-    callApiRequest({ keyboard: keywordToSearch, offset: page }, true);
-
-  }, [keywordToSearch, setGifs, page, callApiRequest]);
+    callApiRequest(
+      { keyboard: keywordToSearch, offset: page, rating, lang },
+      true
+    );
+  }, [keywordToSearch, setGifs, page, rating, lang, callApiRequest]);
 
   return {
     isLoading,

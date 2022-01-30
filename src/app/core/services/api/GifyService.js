@@ -3,7 +3,7 @@ import API_ROUTES from "app/core/const/api.routes";
 const { default: ApiService } = require("./ApiService");
 
 class GifyService extends ApiService {
-  search({ keyboard, rating = "r", lang = "en", offset = 0 } = {}) {
+  search({ keyboard, rating = "g", lang = "en", offset = 0 } = {}) {
     return this.get(
       `${API_ROUTES.GIFY.SEARCH}&q=${keyboard}&limit=${API_ROUTES.LIMIT}&offset=${offset}&rating=${rating}&lang=${lang}`
     ).then((res) => {

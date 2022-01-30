@@ -9,8 +9,11 @@ import useGif from "./hooks/useGif";
 import SearchForm from "./components/SearchForm";
 
 export default function GifsPage() {
-
-  const { isLoading, gifs } = useGif();
+  const { isLoading, gifs } = useGif({
+    keyboard: "",
+    rating: "g",
+    lang: "en",
+  });
 
   if (isLoading) {
     return <CircularSpinnerComponent />;
