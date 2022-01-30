@@ -13,6 +13,7 @@ const API_ROUTES = {
     SEARCH: `${process.env.REACT_APP_GIFY_API_URL}/search?api_key=${process.env.REACT_APP_GIFY_API_KEY}`,
     DETAIL: `${process.env.REACT_APP_GIFY_API_URL}/REPLACE?api_key=${process.env.REACT_APP_GIFY_API_KEY}`,
   },
+  LIMIT: 40,
 };
 
 export default API_ROUTES;

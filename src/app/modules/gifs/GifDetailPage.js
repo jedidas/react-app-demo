@@ -7,15 +7,15 @@ import CircularSpinnerComponent from "app/shared/components/spinners/CircularSpi
 import useGifDetail from "./hooks/useGifDetail";
 
 function GifDetailPage({ params }) {
-  let { id } = params;
 
+  const { id } = params;
   const { gif, isLoading } = useGifDetail({ id });
 
-  if (isLoading) {
+  if (!gif || isLoading) {
     return <CircularSpinnerComponent />;
   }
 
-  const { title = "", url, slug } = gif;
+  const { title, url, slug } = gif;
 
   return (
     <>

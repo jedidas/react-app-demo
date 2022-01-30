@@ -9,36 +9,31 @@ import Header from "app/layouts/components/Header";
 import Footer from "app/layouts/components/Footer";
 import CircularSpinnerComponent from "app/shared/components/spinners/CircularSpinnerComponent";
 import debounce from "just-debounce-it";
+import SearchForm from "./components/SearchForm";
 
 function SearchResults({ params }) {
-  //
 
   const { keyboard = "" } = params;
   const externalRef = useRef();
-  const { isLoading, gifs } = useGif({ keyboard });
+  const { isLoading, gifs, setPage } = useGif({ keyboard });
   const { isNearScreen } = useNearScreen({
     externalRef: isLoading ? null : externalRef,
     once: false,
-    distance: "450px",
+    distance: "850px",
   });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleNextPage = useCallback(
-    debounce(() => {
-      console.log("handleNextPage");
-    }, 600),
-    []
+  const debounceHandleNextPage = useCallback(
+    debounce(() => setPage(gifs.length + 1), 600),
+    [setPage, gifs]
   );
 
   useEffect(() => {
     if (isNearScreen) {
-      handleNextPage();
+      debounceHandleNextPage();
     }
-  }, [handleNextPage, isNearScreen]);
+  }, [debounceHandleNextPage, isNearScreen]);
 
-  if (isLoading) {
-    return <CircularSpinnerComponent />;
-  }
   return (
     <>
       <Helmet>
@@ -46,8 +41,10 @@ function SearchResults({ params }) {
       </Helmet>
       <Header />
       <section className="gifts_page">
+        <SearchForm />
         <List gifs={gifs} />
         <div id="visor" ref={externalRef}></div>
+        {isLoading && <CircularSpinnerComponent />}
       </section>
       <Footer />
     </>

@@ -5,23 +5,18 @@ import { GifContext } from "app/modules/gifs/contexts/GifContext";
 
 export default function useGifDetail({ id }) {
   const { findById } = useContext(GifContext);
-  const [gif, setGif] = useState({});
+  const [gif, setGif] = useState(findById(id));
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const foundedGif = findById(id);
-    if (foundedGif !== null) {
-      setGif(foundedGif);
-      return;
+    if (!gif) {
+      setIsLoading(true);
+      gifyService.detail(id).then((gifResponse) => {
+        setGif(gifResponse);
+        setIsLoading(false);
+      });
     }
-
-    setIsLoading(true);
-
-    gifyService.detail(id).then((gifResponse) => {
-      setGif(gifResponse);
-      setIsLoading(false);
-    });
-  }, [findById, id]);
+  }, [gif, id]);
 
   return {
     gif,
