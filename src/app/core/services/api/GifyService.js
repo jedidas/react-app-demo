@@ -10,7 +10,7 @@ class GifyService extends ApiService {
       const { data = [] } = res;
       return data.map((image) => {
         const { images, title, id, slug } = image;
-        const { url } = images.downsized_medium;
+        const { url } = images.fixed_height_small;
         return { title, id, url, slug };
       });
     });
@@ -20,7 +20,7 @@ class GifyService extends ApiService {
     const apiUrl = API_ROUTES.GIFY.DETAIL.replace("REPLACE", id);
     return this.get(`${apiUrl}`).then(({ data }) => {
       const { images, title, slug } = data;
-      const { url } = images.downsized_medium;
+      const { url } = images.original;
       return { title, id, url, slug };
     });
   }

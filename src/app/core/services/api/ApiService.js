@@ -1,17 +1,21 @@
 class ApiService {
   get(url) {
-    return fetch(url).then(response => response.json());
+    return fetch(url).then(this.callBack);
   }
-  async post(url, data) {
-    const response = await fetch(url, {
+  post({ url, data, headers = { "Content-Type": "application/json" } }) {
+    return fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify(data),
-    });
-    return response.json();
+    }).then(this.callBack);
   }
+
+  callBack = function (response) {
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+    return response.json();
+  };
 }
 
 export default ApiService;

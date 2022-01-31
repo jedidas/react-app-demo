@@ -22,7 +22,7 @@ export default function GifsPage() {
       <Helmet>
         <title>My Gifs</title>
       </Helmet>
-      
+
       <section className="gifts_page">
         <h1>Gifs</h1>
 
